@@ -1,0 +1,9 @@
+server:
+  port: 8050 # ????
+spring:
+  application:
+    name: eurekaserver # eureka?????
+eureka:
+  client:
+    service-url:  # eureka?????
+      defaultZone: http://127.0.0.1:8050/eureka
