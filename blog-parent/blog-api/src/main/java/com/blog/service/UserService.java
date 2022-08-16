@@ -19,6 +19,7 @@ public interface UserService  {
     User findUserByAccount(String account);
 
     void save(User user);
-//
-//    UserVo findUserVoById(Long id);
+
+
+    UserVo findUserVoById(Long id);
 }

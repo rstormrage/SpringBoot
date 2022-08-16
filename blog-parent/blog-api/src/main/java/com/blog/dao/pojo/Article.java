@@ -1,6 +1,8 @@
 package com.blog.dao.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -19,17 +21,16 @@ public class Article {
     public static final int Article_Common = 0;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     private String title;
 
     private String summary;
 
-    private int commentCounts;
+    private Integer commentCounts;
 
-    private int viewCounts;
+    private Integer viewCounts;
 
     /**
      * 作者id
@@ -40,14 +41,14 @@ public class Article {
      */
     private Long bodyId;
     /**
-     *类别id
+     * 类别id
      */
     private Long categoryId;
 
     /**
      * 置顶
      */
-    private int weight = Article_Common;
+    private Integer weight;
 
 
     /**
@@ -56,10 +57,6 @@ public class Article {
     @JsonFormat(locale = "us", pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp createDate;
 
-    @PrePersist
-    protected void prePersist() {
-        createDate = new Timestamp(new Date().getTime());
-    }
 }
 
 

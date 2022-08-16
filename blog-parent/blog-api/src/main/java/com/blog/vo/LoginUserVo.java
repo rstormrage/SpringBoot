@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class LoginUserVo {
     //防止前端 精度损失 把id转换为string
-   // @JsonSerialize(using = ToStringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     private String account;

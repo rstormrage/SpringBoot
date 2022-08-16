@@ -1,6 +1,8 @@
 package com.blog.vo;
 
 import com.blog.vo.TagVo;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -12,17 +14,19 @@ import java.util.List;
 @Getter
 @Setter
 public class ArticleVo {
+
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     private String title;
 
     private String summary;
 
-    private int commentCounts;
+    private Integer commentCounts;
 
-    private int viewCounts;
+    private Integer viewCounts;
 
-    private int weight;
+    private Integer weight;
     /**
      * 创建时间
      */

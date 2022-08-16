@@ -80,6 +80,22 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         userMapper.insert(user);
     }
+
+    @Override
+    public UserVo findUserVoById(Long id) {
+        User user = userMapper.selectById(id);
+        if (user == null){
+            user = new User();
+            user.setId(1L);
+            user.setAvatar("/static/img/logo.b3a48c0.png");
+            user.setNickname("无名评论");
+        }
+        UserVo userVo = new UserVo();
+        userVo.setAvatar(user.getAvatar());
+        userVo.setNickname(user.getNickname());
+        userVo.setId(user.getId());
+        return userVo;
+    }
 //
 //    @Override
 //    public UserVo findUserVoById(Long id) {

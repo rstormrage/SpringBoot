@@ -1,17 +1,21 @@
-package com.blog.vo;
+package com.blog.vo.params;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
+import javax.persistence.Id;
+
 @Data
-public class CategoryVo {
+public class CommentParam {
 
-    //防止前端 精度损失 把id转换为string
+
     @JsonSerialize(using = ToStringSerializer.class)
-    private Long id;
+    private Long articleId;
 
-    private String avatar;
+    private String content;
 
-    private String categoryName;
+    private Long parent;
+
+    private Long toUserId;
 }

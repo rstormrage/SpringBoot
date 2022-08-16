@@ -1,5 +1,7 @@
 package com.blog.dao.pojo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,8 +14,7 @@ import javax.persistence.*;
 @Setter
 public class ArticleBody {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     private String content;

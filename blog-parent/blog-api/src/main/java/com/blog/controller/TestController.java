@@ -12,7 +12,6 @@ public class TestController {
 
     @RequestMapping
     public Result test(){
-//        SysUser
         User user = UserThreadLocal.get();
         System.out.println(user);
         return Result.success(null);
